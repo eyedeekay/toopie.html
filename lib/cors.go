@@ -3,7 +3,6 @@ package toopie
 import (
 	"bufio"
 	"bytes"
-	"flag"
 	"fmt"
 	"github.com/aybabtme/iocontrol"
 	"github.com/dustin/go-humanize"
@@ -37,9 +36,8 @@ func Listen(port string) net.Listener {
 
 func proxy(localAddr, remoteAddr string) string {
 	var (
-		lPort = flag.Int("port", 7677, "local port on which the proxy will listen")
+		lPort = 7677
 	)
-	flag.Parse()
 
 	log.SetFlags(0)
 	log.SetPrefix("portproxy: ")
@@ -48,7 +46,7 @@ func proxy(localAddr, remoteAddr string) string {
 		log.Fatal("need to define a remote address")
 	}
 
-	l, err := net.Listen("tcp", fmt.Sprintf(":%d", *lPort))
+	l, err := net.Listen("tcp", fmt.Sprintf(":%d", lPort))
 	if err != nil {
 		log.Fatalf("couldn't setup listener for proxy: %v", err)
 	}
@@ -58,7 +56,7 @@ func proxy(localAddr, remoteAddr string) string {
 
 	ctx, cancel := context.WithCancel(context.Background())
 
-	log.Printf("now proxying port %d to %q", *lPort, remoteAddr)
+	log.Printf("now proxying port %d to %q", lPort, remoteAddr)
 	go func() {
 		i := uint64(1)
 		var inflight int
