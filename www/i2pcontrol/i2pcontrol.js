@@ -14,7 +14,7 @@ function makeid(length) {
 function send(
   message,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc"
 ) {
   async function postData(url = "", data = {}) {
@@ -47,7 +47,7 @@ function send(
 async function authenticate(
   password = "itoopie",
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc"
 ) {
   var json = new Object();
@@ -63,7 +63,7 @@ async function authenticate(
 async function GetToken(
   password = "itoopie",
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc"
 ) {
   function gettoken(authtoken) {
@@ -76,7 +76,7 @@ async function GetToken(
 async function Echo(
   message,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -100,7 +100,7 @@ function UpdateEchoElementByID(
   Query,
   ID,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc"
 ) {
   function updateelement(update) {
@@ -115,7 +115,7 @@ function UpdateEchoElementByID(
 async function GetRate(
   Query,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -139,7 +139,7 @@ function UpdateGetRateElementByID(
   Query,
   ID,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc"
 ) {
   function updateelement(update) {
@@ -154,7 +154,7 @@ function UpdateGetRateElementByID(
 async function I2PControl(
   Query,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -177,7 +177,7 @@ function UpdateI2PControlElementByID(
   Query,
   ID,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc"
 ) {
   function updateelement(update) {
@@ -198,7 +198,7 @@ function UpdateI2PControlElementByID(
 async function RouterInfo(
   Query,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -221,7 +221,7 @@ function UpdateRouterInfoElementByID(
   Query,
   ID,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -249,7 +249,7 @@ function UpdateRouterInfoElementByID(
 async function RouterManager(
   Query,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -272,7 +272,7 @@ function UpdateRouterManagerElementByID(
   Query,
   ID,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -294,7 +294,7 @@ function UpdateRouterManagerElementByID(
 async function NetworkSetting(
   Query,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
@@ -317,7 +317,7 @@ function UpdateNetworkSettingElementByID(
   Query,
   ID,
   control_host = "127.0.0.1",
-  control_port = "7677",
+  control_port = "7657",
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
