@@ -9,10 +9,11 @@ import (
 )
 
 var (
-	port = flag.String("port", "0", "Port to run the web interface on, default is randomly assigned.")
+	port  = flag.String("port", "0", "Port to run the web interface on, default is randomly assigned.")
+	pport = flag.Int("proxy-port", 7677, "Port to use to proxy requests to i2p-control")
 )
 
 func main() {
 	flag.Parse()
-	toopie.Launch(*port)
+	toopie.Launch(*port, *pport)
 }

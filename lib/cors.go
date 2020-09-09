@@ -26,54 +26,57 @@ var (
 
 type fileServer struct {
 	*fs
+	port string
 }
 
 func (serv fileServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	fi, err := serv.fs.Open(r.URL.Path)
 	if len(r.URL.Path) < 2 {
-		r.URL.Path = "index.html"
+		r.URL.Path = "/index.html"
 	}
-	log.Printf("Opening page", r.URL.Path)
+	fi, err := serv.fs.Open(r.URL.Path)
 	if err != nil {
 		log.Println("error1", err)
 		fi, err = serv.fs.Open("index.html")
 		if err != nil {
-			log.Println("error2", err)
 			return
 		}
 	}
-	log.Printf("Copying buffer", r.URL.Path)
 	buf := bytes.NewBuffer(nil)
 	_, err = io.Copy(buf, fi)
 	if err != nil {
-		log.Println("error3", err)
 		return
 	}
 	fi.Close()
-	log.Printf("Writing output", string(buf.Bytes()))
-	w.Write([]byte(strings.Replace(string(buf.Bytes()), "7657", "7677", -1)))
+	if strings.Contains(r.URL.Path, ".css") {
+		w.Header().Add("Content-Type", "text/css")
+	}
+	if strings.Contains(r.URL.Path, ".js") {
+		w.Header().Add("Content-Type", "text/javascript")
+	}
+	w.Write([]byte(strings.Replace(string(buf.Bytes()), "7657", serv.port, -1)))
 }
 
-func FileServer(files *fs) *fileServer {
+func FileServer(files *fs, port int) *fileServer {
 	var fis fileServer
 	fis.fs = files
+	fis.port = fmt.Sprintf("%d", port)
 	return &fis
 }
 
-func Listen(port string) net.Listener {
+func Listen(port string, pport int) net.Listener {
 	ln, err := net.Listen("tcp", "127.0.0.1:"+port)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Println(fmt.Sprintf("http://%s", ln.Addr()))
-	go http.Serve(ln, nosurf.New(FileServer(FS)))
-	go proxy(fmt.Sprintf("http://%s", ln.Addr()), fmt.Sprintf("localhost:7657"))
+	go http.Serve(ln, nosurf.New(FileServer(FS, pport)))
+	go proxy(fmt.Sprintf("http://%s", ln.Addr()), fmt.Sprintf("localhost:7657"), pport)
 	return ln
 }
 
-func proxy(localAddr, remoteAddr string) string {
+func proxy(localAddr, remoteAddr string, proxyPort int) string {
 	var (
-		lPort   = 7677
+		lPort   = proxyPort
 		verbose = false
 	)
 
