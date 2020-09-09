@@ -104,7 +104,6 @@ func proxyHTTP(parent context.Context, lconn net.Conn, req *http.Request, locala
 	start := time.Now()
 	id := <-connIDs
 	defer func() { connDone <- id }()
-	log.Printf("[%d] highjacking HTTP request!", id)
 
 	rconn, err := net.DialTimeout("tcp", req.RemoteAddr, timeout)
 	if err != nil {
