@@ -2,13 +2,11 @@
   padding: 0;
   margin: 0
 }
-html {
-  height: 100%
-}
 a,
 button {
   color: #3b6bbf;
   text-decoration: none;
+  background: none;
   font-weight: 700;
   word-wrap: break-word;
   outline: 0;
@@ -148,13 +146,12 @@ h4 {
 }
 ul {
   margin: auto;
-  list-style: none;
   width: 85vw;
   border-radius: 2px;
 }
 li {
   display: block;
-  margin: auto;
+  text-align: center
 }
 .center {
   display: block;
@@ -272,3 +269,9 @@ img.readyness {
     display: none
   }
 }
+@media only screen and (max-height: 399px) {
+  body {
+    flex-direction: row;
+  }
+}
+
