@@ -1,9 +1,15 @@
 
-run:
+run: fmt gen
 	go run ./
+
+fmt:
+	gofmt -w -s *.go */*.go
 
 clean:
 	rm i2pcontrol.js
 
 i2pcontrol.js:
 	wget "https://raw.githubusercontent.com/eyedeekay/I2P-in-Private-Browsing-Mode-Firefox/i2pcontrol/i2pcontrol/i2pcontrol.js"
+
+gen:
+	go run --tags=generate gen.go
