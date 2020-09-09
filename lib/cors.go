@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/aybabtme/iocontrol"
 	"github.com/dustin/go-humanize"
+	"github.com/justinas/nosurf"
 	"golang.org/x/net/context"
 	"io"
 	"log"
@@ -23,13 +24,49 @@ var (
 	connDone = make(chan uint64)
 )
 
+type fileServer struct {
+	*fs
+}
+
+func (serv fileServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	fi, err := serv.fs.Open(r.URL.Path)
+	if len(r.URL.Path) < 2 {
+		r.URL.Path = "index.html"
+	}
+	log.Printf("Opening page", r.URL.Path)
+	if err != nil {
+		log.Println("error1", err)
+		fi, err = serv.fs.Open("index.html")
+		if err != nil {
+			log.Println("error2", err)
+			return
+		}
+	}
+	log.Printf("Copying buffer", r.URL.Path)
+	buf := bytes.NewBuffer(nil)
+	_, err = io.Copy(buf, fi)
+	if err != nil {
+		log.Println("error3", err)
+		return
+	}
+	fi.Close()
+	log.Printf("Writing output", string(buf.Bytes()))
+	w.Write([]byte(strings.Replace(string(buf.Bytes()), "7657", "7677", -1)))
+}
+
+func FileServer(files *fs) *fileServer {
+	var fis fileServer
+	fis.fs = files
+	return &fis
+}
+
 func Listen(port string) net.Listener {
 	ln, err := net.Listen("tcp", "127.0.0.1:"+port)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Println(fmt.Sprintf("http://%s", ln.Addr()))
-	go http.Serve(ln, http.FileServer(FS))
+	go http.Serve(ln, nosurf.New(FileServer(FS)))
 	go proxy(fmt.Sprintf("http://%s", ln.Addr()), fmt.Sprintf("localhost:7657"))
 	return ln
 }
