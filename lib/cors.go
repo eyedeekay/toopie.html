@@ -105,6 +105,7 @@ func proxy(localAddr, remoteAddr string) string {
 
 func proxyHTTP(parent context.Context, lconn net.Conn, req *http.Request, localaddr string) {
 	defer lconn.Close()
+	verbose := false
 
 	start := time.Now()
 	id := <-connIDs
@@ -128,6 +129,22 @@ func proxyHTTP(parent context.Context, lconn net.Conn, req *http.Request, locala
 			select {
 			case <-ctx.Done():
 				dur := time.Since(start)
+				if verbose {
+					log.Printf("[%d] %s\tHTTP\ttx:%s @ %sps\t\trx:%s @ %sps",
+						id,
+						dur,
+						humanize.IBytes(uint64(mwr.Total())),
+						humanize.IBytes(uint64(mwr.BytesPerSec())),
+						humanize.IBytes(uint64(mrd.Total())),
+						humanize.IBytes(uint64(mrd.BytesPerSec())),
+					)
+				}
+				return
+			case <-tick.C:
+			}
+
+			dur := time.Since(start)
+			if verbose {
 				log.Printf("[%d] %s\tHTTP\ttx:%s @ %sps\t\trx:%s @ %sps",
 					id,
 					dur,
@@ -136,19 +153,7 @@ func proxyHTTP(parent context.Context, lconn net.Conn, req *http.Request, locala
 					humanize.IBytes(uint64(mrd.Total())),
 					humanize.IBytes(uint64(mrd.BytesPerSec())),
 				)
-				return
-			case <-tick.C:
 			}
-
-			dur := time.Since(start)
-			log.Printf("[%d] %s\tHTTP\ttx:%s @ %sps\t\trx:%s @ %sps",
-				id,
-				dur,
-				humanize.IBytes(uint64(mwr.Total())),
-				humanize.IBytes(uint64(mwr.BytesPerSec())),
-				humanize.IBytes(uint64(mrd.Total())),
-				humanize.IBytes(uint64(mrd.BytesPerSec())),
-			)
 		}
 	}()
 
