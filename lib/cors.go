@@ -24,8 +24,8 @@ var (
 	connDone = make(chan uint64)
 )
 
-func Listen() net.Listener {
-	ln, err := net.Listen("tcp", "127.0.0.1:0")
+func Listen(port string) net.Listener {
+	ln, err := net.Listen("tcp", "127.0.0.1:"+port)
 	if err != nil {
 		log.Fatal(err)
 	}

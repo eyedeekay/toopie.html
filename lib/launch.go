@@ -7,8 +7,8 @@ import (
 	"github.com/webview/webview"
 )
 
-func Launch() {
-	ln := Listen()
+func Launch(port string) {
+	ln := Listen(port)
 	defer ln.Close()
 	debug := true
 	w := webview.New(debug)
