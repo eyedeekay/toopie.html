@@ -36,7 +36,8 @@ func Listen(port string) net.Listener {
 
 func proxy(localAddr, remoteAddr string) string {
 	var (
-		lPort = 7677
+		lPort   = 7677
+		verbose = false
 	)
 
 	log.SetFlags(0)
@@ -67,12 +68,16 @@ func proxy(localAddr, remoteAddr string) string {
 			case connIDs <- i:
 				i++
 				inflight++
-				log.SetPrefix(fmt.Sprintf("portproxy: %d conns ", inflight))
-				log.Printf("[%d] new connection", i)
+				if verbose {
+					log.SetPrefix(fmt.Sprintf("portproxy: %d conns ", inflight))
+					log.Printf("[%d] new connection", i)
+				}
 			case id := <-connDone:
 				inflight--
-				log.SetPrefix(fmt.Sprintf("portproxy: %d conns ", inflight))
-				log.Printf("[%d] connection done", id)
+				if verbose {
+					log.SetPrefix(fmt.Sprintf("portproxy: %d conns ", inflight))
+					log.Printf("[%d] connection done", id)
+				}
 			}
 		}
 	}()
