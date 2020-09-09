@@ -1,6 +1,8 @@
 function contentUpdateById(id, message) {
   let infoTitle = document.getElementById(id);
-  let messageContent = chrome.i18n.getMessage(message);
+// TODO: Let messageContent == whatever we need to do to internationalize
+// in-browser javascript
+//  let messageContent = chrome.i18n.getMessage(message);
   if (infoTitle === null) {
     console.log('content error', id, messageContent);
     return;

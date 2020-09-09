@@ -36,6 +36,30 @@ document.addEventListener("click", clickEvent => {
   } else if (clickEvent.target.id === "label-router-shutdown") {
     console.log("attempting to initiate graceful shutdown");
     RouterManager("ShutdownGraceful");
+  } else if (clickEvent.target.id === "label-router-status") {
+    if (document.getElementById("label-status-list").style.display !== "none"){
+      console.log("hiding label-status-list");
+      document.getElementById("label-status-list").style.display = "none"
+    }else{
+      console.log("showing label-status-list");
+      document.getElementById("label-status-list").style.display = "block"
+    }
+  } else if (clickEvent.target.id === "label-router-peers") {
+    if (document.getElementById("label-peers-list").style.display !== "none"){
+      console.log("hiding label-peers-list");
+      document.getElementById("label-peers-list").style.display = "none"
+    }else{
+      console.log("showing label-peers-list");
+      document.getElementById("label-peers-list").style.display = "block"
+    }
+  } else if (clickEvent.target.id === "label-router-bandwidth") {
+    if (document.getElementById("label-bandwidth-list").style.display !== "none"){
+      console.log("hiding label-bandwidth-list");
+      document.getElementById("label-bandwidth-list").style.display = "none"
+    }else{
+      console.log("showing label-bandwidth-list");
+      document.getElementById("label-bandwidth-list").style.display = "block"
+    }
   } else if (clickEvent.target.id === "search-submit") {
     console.log("attempting to create search tab");
     goSearch();
@@ -89,6 +113,9 @@ document.addEventListener("click", clickEvent => {
 
   clickEvent.preventDefault();
 });
+
+document.getElementById("label-peers-list").style.display = "none"
+document.getElementById("label-bandwidth-list").style.display = "none"
 
 if (UpdateContents !== undefined) UpdateContents();
 

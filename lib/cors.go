@@ -53,6 +53,9 @@ func (serv fileServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if strings.Contains(r.URL.Path, ".js") {
 		w.Header().Add("Content-Type", "text/javascript")
 	}
+	if strings.Contains(r.URL.Path, ".svg") {
+		w.Header().Add("Content-Type", "image/svg+xml")
+	}
 	w.Write([]byte(strings.Replace(string(buf.Bytes()), "7657", serv.port, -1)))
 }
 
