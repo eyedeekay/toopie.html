@@ -35,8 +35,7 @@ func (serv fileServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	fi, err := serv.fs.Open(r.URL.Path)
 	if err != nil {
-		log.Println("error1", err)
-		fi, err = serv.fs.Open("index.html")
+		fi, err = serv.fs.Open("/index.html")
 		if err != nil {
 			return
 		}
@@ -94,7 +93,7 @@ func proxy(localAddr, remoteAddr string, proxyPort int) string {
 	if err != nil {
 		log.Fatalf("couldn't setup listener for proxy: %v", err)
 	}
-	defer l.Close()
+	//defer l.Close()
 
 	runtime.GOMAXPROCS(runtime.NumCPU())
 

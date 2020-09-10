@@ -15,5 +15,7 @@ var (
 
 func main() {
 	flag.Parse()
-	toopie.Launch(*port, *pport)
+	l, v := toopie.Launch(*port, *pport)
+	defer v.Destroy()
+	defer l.Close()
 }
