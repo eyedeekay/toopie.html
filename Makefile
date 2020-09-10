@@ -5,6 +5,9 @@ build: fmt gen
 run: fmt gen
 	go run ./ -port 9001 #-ribbon true
 
+test:
+	cd import && go test
+
 fmt:
 	gofmt -w -s *.go */*.go
 
