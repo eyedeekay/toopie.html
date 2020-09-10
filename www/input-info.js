@@ -114,8 +114,10 @@ document.addEventListener("click", clickEvent => {
   clickEvent.preventDefault();
 });
 
-document.getElementById("label-peers-list").style.display = "none"
-document.getElementById("label-bandwidth-list").style.display = "none"
+window.onload = function(e){ 
+  document.getElementById("label-peers-list").style.display = "none"
+  document.getElementById("label-bandwidth-list").style.display = "none"
+}
 
 if (UpdateContents !== undefined) UpdateContents();
 
