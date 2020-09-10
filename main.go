@@ -5,7 +5,6 @@ package main
 import (
 	"flag"
 	"github.com/eyedeekay/toopie.html/lib"
-	//	"github.com/mattn/go-gtk/gdk"
 )
 
 var (

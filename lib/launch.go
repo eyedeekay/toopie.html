@@ -4,7 +4,7 @@ package toopie
 
 import (
 	"fmt"
-	"github.com/zserge/webview"
+	"github.com/webview/webview"
 	"net"
 )
 
