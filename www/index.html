@@ -6,6 +6,9 @@
     <link href="sidebar.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <script src="i2pcontrol/i2pcontrol.js"></script>
+    <script src="input-info.js"></script>
+    <script src="content.js"></script> 
     <h1>I2P Router Information</h1>
 
     <ul>
@@ -18,11 +21,11 @@
 
     <ul class="button-list">
         <li><button id="label-router-restart" target="_blank">
-          <img src="/images/restart.svg" alt="Restart:"/> </button></br> <span id="router-restart">Gracefully restart router</span>
+          <img id="label-router-shutdown" src="/images/restart.svg" alt="Restart:"/> </button></br> <span id="router-restart">Gracefully restart router</span>
         </li>
 
         <li><button id="label-router-shutdown" target="_blank">
-          <img src="/images/shutdown.svg" alt="Shutdown:"/></button></br> <span id="router-shutdown">Gracefully shutdown router</span>
+          <img id="label-router-shutdown" src="/images/shutdown.svg" alt="Shutdown:"/></button></br> <span id="router-shutdown">Gracefully shutdown router</span>
         </li>
     </ul>
 
@@ -82,9 +85,5 @@
 
         <li><span id="label-router-netdb-knownpeers">Known Peers:</span> <span id="router-netdb-knownpeers">Replace with Router Known Peers</span></li>
     </ul></br></br>
-
-    <script src="i2pcontrol/i2pcontrol.js"></script>
-    <script src="input-info.js"></script>
-    <script src="content.js"></script> 
 </body>
 </html>

@@ -4,18 +4,26 @@ package main
 
 import (
 	"flag"
-
 	"github.com/eyedeekay/toopie.html/lib"
+	//	"github.com/mattn/go-gtk/gdk"
 )
 
 var (
-	port  = flag.String("port", "0", "Port to run the web interface on, default is randomly assigned.")
-	pport = flag.Int("proxy-port", 7677, "Port to use to proxy requests to i2p-control")
+	port   = flag.String("port", "0", "Port to run the web interface on, default is randomly assigned.")
+	pport  = flag.Int("proxy-port", 7677, "Port to use to proxy requests to i2p-control")
+	ribbon = flag.Bool("ribbon", false, "use a horizontal ribbon instead of a vertical panel")
 )
 
 func main() {
 	flag.Parse()
-	l, v := toopie.Launch(*port, *pport)
-	defer v.Destroy()
-	defer l.Close()
+	if *ribbon {
+		l, v := toopie.Launch(*port, *pport, 1200, 200)
+		defer v.Destroy()
+		defer l.Close()
+	} else {
+		l, v := toopie.Launch(*port, *pport, 500, 800)
+		defer v.Destroy()
+		defer l.Close()
+	}
+
 }

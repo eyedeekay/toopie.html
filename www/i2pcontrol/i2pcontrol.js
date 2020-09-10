@@ -253,6 +253,7 @@ async function RouterManager(
   control_path = "jsonrpc",
   password = "itoopie"
 ) {
+  console.log("management command", Query)
   function routermanager(token) {
     var json = new Object();
     json['id'] = makeid(6);

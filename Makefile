@@ -3,7 +3,7 @@ build: fmt gen
 	go build --tags=netgo
 
 run: fmt gen
-	go run ./ -port 9001
+	go run ./ -port 9001 -ribbon true
 
 fmt:
 	gofmt -w -s *.go */*.go
