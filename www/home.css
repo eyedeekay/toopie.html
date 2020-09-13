@@ -48,6 +48,7 @@ body {
   text-decoration: none;
   font-weight: 700;
   word-wrap: break-word;
+  background: #1f1a24;
   outline: 0
 }
 .button-list {
