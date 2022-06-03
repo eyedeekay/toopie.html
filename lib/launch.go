@@ -4,7 +4,7 @@ package toopie
 
 import (
 	"fmt"
-	"github.com/webview/webview"
+	"github.com/jchv/go-webview-selector"
 	"net"
 )
 
