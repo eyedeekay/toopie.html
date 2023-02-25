@@ -10,5 +10,5 @@ require (
 	github.com/justinas/nosurf v1.1.1
 	github.com/webview/webview v0.0.0-20200724072439-e0c01595b361 // indirect
 	github.com/zserge/lorca v0.1.9
-	golang.org/x/net v0.0.0-20200222125558-5a598a2470a0
+	golang.org/x/net v0.7.0
 )
