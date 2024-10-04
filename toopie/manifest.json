@@ -6,23 +6,7 @@
     }
   },
   "permissions": [
-    "theme",
-    "alarms",
-    "browsingData",
-    "bookmarks",
-    "contextMenus",
-    "management",
-    "notifications",
     "proxy",
-    "privacy",
-    "storage",
-    "webNavigation",
-    "webRequest",
-    "webRequestBlocking",
-    "contextualIdentities",
-    "cookies",
-    "history",
-    "tabs",
     "<all_urls>"
   ],
   "manifest_version": 2,
@@ -48,6 +32,12 @@
   },
   "options_ui": {
     "page": "options/options.html"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "config.js"
+    ]
   },
   "default_locale": "en"
 }

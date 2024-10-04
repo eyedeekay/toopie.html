@@ -1,3 +1,18 @@
+
+function handleProxyRequest(requestInfo) {
+  console.log(`Proxying: ${requestInfo.url}`);
+  return { type: "http", host: "127.0.0.1", port: 4444 };
+}
+
+browser.proxy.onRequest.addListener(handleProxyRequest, {
+  urls: ["http://proxy.i2p/*", "https://proxy.i2p/*"],
+});
+
+/*browser.proxy.onRequest.addListener(handleProxyRequest, {
+  urls: ["<all_urls>"],
+});*/
+
+
 function proxy_scheme() {
   console.info("(config)Got i2p:", getFuncName());
   return getFromStorageProxyScheme();
@@ -57,5 +72,3 @@ function bt_rpc_pass() {
 function getFuncName() {
   return getFuncName.caller.name;
 }
-
-var disable_history = false;
