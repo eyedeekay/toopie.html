@@ -19,10 +19,6 @@
         </select>
     </section>
 
-    <section class="scheme-options">
-        <span class="title">Bookmarks Status:</span> <input id="bookmarksState" name="bookmarksstate" type="checkbox" value="bookmarksstate"> <label for="bookmarksState">Bookmarks were created at install-time. <button id="bookmarksButton" type="submit">Re-Create Bookmarks</button></label>
-    </section>
-
     <section class="scheme-options proxy-options" id="proxy-options">
         <label for="bookmarksState"></label>
         <div class="title">
@@ -35,11 +31,6 @@
         <br>
         <label id="hostText">Port:</label> <input data="port" id="port" type="text" value="4444"></label>
     </section>
-    <!--<section class="scheme-options identity-options">
-      <div class="panel">
-        <div id="identity-list">Identity list?</div>
-      </div>
-    </section>-->
 
     <section class="scheme-options console-options" id="console-options">
         <div>
@@ -71,22 +62,6 @@
         </div>
     </section>
 
-    <section class="scheme-options transmission-options" id="transmission-options">
-        <div>
-            <div class="title">
-                Bittorrent RPC Client Options
-            </div>
-
-            <p id="rpcHelpText">Configure your Bittorrent options here.</p>
-            <label id="btRpcHostText">Torrent RPC Host:</label> <input data="btrpchost" id="btrpchost" type="text" value="127.0.0.1">
-            <br>
-            <label id="btRpcPortText">Torrent RPC Port:</label> <input data="btrpcport" id="btrpcport" type="text" value="7657">
-            <br>
-            <label id="btRpcPathText">Torrent RPC Path:</label> <input data="btrpcpath" id="btrpcpath" type="text" value="transmission/">
-            <br>
-            <label id="rpcPassText">Torrent RPC Password:</label> <input data="btrpcpass" id="btrpcpass" type="text" value="">
-        </div>
-    </section>
     <input id="save-button" type="button" value="Save preferences"> 
     <script src="options.js"></script> 
 </body>
