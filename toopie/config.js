@@ -8,11 +8,6 @@ browser.proxy.onRequest.addListener(handleProxyRequest, {
   urls: ["http://proxy.i2p/*", "https://proxy.i2p/*"],
 });
 
-/*browser.proxy.onRequest.addListener(handleProxyRequest, {
-  urls: ["<all_urls>"],
-});*/
-
-
 function proxy_scheme() {
   console.info("(config)Got i2p:", getFuncName());
   return getFromStorageProxyScheme();
@@ -50,23 +45,6 @@ function rpc_path() {
 function rpc_pass() {
   console.info("(config)Got i2p:", getFuncName());
   return getFromStorageRPCPass();
-}
-
-function bt_rpc_host() {
-  console.info("(config)Got i2p:", getFuncName());
-  return getFromStorageBTRPCHost();
-}
-function bt_rpc_port() {
-  console.info("(config)Got i2p:", getFuncName());
-  return getFromStorageBTRPCPort();
-}
-function bt_rpc_path() {
-  console.info("(config)Got i2p:", getFuncName());
-  return getFromStorageBTRPCPath();
-}
-function bt_rpc_pass() {
-  console.info("(config)Got i2p:", getFuncName());
-  return getFromStorageBTRPCPass();
 }
 
 function getFuncName() {
