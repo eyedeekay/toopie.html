@@ -2,33 +2,8 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: toopie
 Source: https://github.com/eyedeekay/toopie
 
-Files:     .gitignore
-           Makefile
-           README.md
-           _locales/en/messages.json
-           background.js
-           content.js
-           context.js
-           .circleci/config.yml
-           experiments/i2ptab.md
-           experiments/tunblink.md
-           toopie.png
-           toopie@eyedeekay.github.io.xpi
-           icons/toopie.png
-           info.css
-           info.js
-           manifest.json
-           options/options.css
-           options/options.js
-           options/options.html
-           package-lock.json
-           platform.js
-           privacy.js
-           proxy.js
-           scrub.js
-           window.html
-           debian/*
-           *
+Files:     
+           /*
 Copyright: MIT
 License:   MIT
  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -48,12 +23,3 @@ License:   MIT
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
-
-Files:     chromium/browser-polyfill.js
-Copyright: MPL in: chromium/LICENSE
-License:   MPL-2.0
- This Source Code Form is subject to the terms of the Mozilla Public
- License, v. 2.0. If a copy of the MPL was not distributed with this
- file, You can obtain one at http://mozilla.org/MPL/2.0/.
- .
-
