@@ -15,17 +15,18 @@
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/eyedeekay/toopie.html",
   "icons": {
-    "96": "icons/i2plogo.png"
+    "96": "images/itoopie.svg"
   },
   "browser_action": {
     "browser_style": true,
-    "default_icon": "icons/i2plogo.png",
+    "default_icon": "images/itoopie.svg",
     "default_title": "__MSG_extensionName__",
-    "default_popup": "toopie.html"
+    "default_popup": "toopie.html",
+    "default_area": "navbar"
   },
   "sidebar_action": {
     "browser_style": true,
-    "default_icon": "icons/i2plogo.png",
+    "default_icon": "images/itoopie.svg",
     "default_title": "__MSG_toopieName__",
     "default_panel": "toopie.html",
     "open_at_install": true
