@@ -12,11 +12,3 @@ enable the `jsonrpc` app as seen in the screenshot below:
 
 ![enable i2pcontrol](i2pcontrol.png)
 
-HELP WANTED!!!
---------------
-
-I don't have a Mac, mine bit the dust. I need help creating a Mac package
-of this. Please, if you want a Mac version of this application and have
-Mac packaging experience, create an issue so we can work together to figure
-out how to support Mac users best.
-
