@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+export PREFIX=debian/toopie/usr
+
+override_dh_auto_install:
+	make install

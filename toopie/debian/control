@@ -1,0 +1,15 @@
+Source: toopie
+Section: unknown
+Priority: optional
+Maintainer: idk <hankhill19580@gmail.com>
+Build-Depends: debhelper (>=11~)
+Standards-Version: 4.1.4
+Homepage: https://github.com/eyedeekay/toopie
+
+Package: toopie
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Plugin for viewing I2P router status in Firefox and Chromium
+ This is a webextension which provides information about the status of an
+ I2P router directly in the sidebar.
