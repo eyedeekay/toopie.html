@@ -40,7 +40,7 @@ function rpc_port() {
 }
 function rpc_path() {
   console.info("(config)Got i2p:", getFuncName());
-  getFromStorageRPCPath();
+  return getFromStorageRPCPath();
 }
 function rpc_pass() {
   console.info("(config)Got i2p:", getFuncName());
