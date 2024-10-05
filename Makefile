@@ -19,3 +19,9 @@ i2pcontrol.js:
 
 gen:
 	go run --tags=generate gen.go
+
+install-helpers:
+	install -m755 capitalize.sh /usr/local/bin/capitalize
+	install -m755 contents.sh /usr/local/bin/contents
+	install -m755 find-ids.sh /usr/local/bin/find-ids
+	install -m755 lowercase.sh /usr/local/bin/lowercase

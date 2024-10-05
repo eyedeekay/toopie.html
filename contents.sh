@@ -9,4 +9,11 @@ echo "function contentUpdateById(id, message) {
   infoTitle.textContent = messageContent;
 }"
 
-for f in $(find-ids $1); do echo  -n "contentUpdateById(\"$f\", \""; lowercase $(capitalize $f | tr -d '-'); echo "\");"; done
+for f in $@; do
+    for i in $(find-ids $f); do
+        echo $i | grep '#' && continue
+        echo  -n "contentUpdateById(\"$i\", \""
+        lowercase $(capitalize $i | tr -d '-')
+        echo "\"); // $f"
+    done
+done
